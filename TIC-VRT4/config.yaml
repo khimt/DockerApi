@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exemple-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: exemple-app-pod
+  template:
+    metadata:
+      labels:
+        app: exemple-app-pod
+    spec:
+      containers:
+      - name: exemple-app-container
+        image: php:latest
+        resources:
+          limits:
+            memory: "130Mi"
+            cpu:  "500m"
+        ports:
+        - containerPort: 4242
